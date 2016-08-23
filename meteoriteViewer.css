@@ -6,23 +6,30 @@ body, html{
 }
 
 body {
+  background-image: url(large_crater.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: rgba(99, 92, 99, 0.08);
 }
 
 #header {
   background-image: url('stars.jpg');
+  opacity: 0.8;
   background-attachment: fixed;
   margin-bottom: 3%;
 }
 
 #introText {
   padding-top: 3%;
-  font-family: 'Space Mono', monospace;
+  opacity: 1.0;
+  font-family: 'Share Tech', sans-serif;
   color: rgb(206, 209, 212);
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 #addressForm {
+  opacity: 1.0;
   margin-top: 3%
 }
 
@@ -32,8 +39,8 @@ body {
 
 .errorMessage {
   color: rgb(246, 23, 9);
-  font-family: 'Space Mono', monospace;
-  font-size: 1.1em;
+  font-family: 'Share Tech', sans-serif;
+  font-size: 1.3em;
 }
 
 #meteoriteMap {
