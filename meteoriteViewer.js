@@ -57,7 +57,6 @@
                           $('#jQuery').before('<div class="col-sm-8 col-sm-offset-2" id="meteoriteMap"></div>');
                           createMeteoriteMap(lat, lng, radiusOfInterest);
                           setMeteoriteMapMarkers(NASAdata);
-                          $("#meteoriteMap").scrollTop();
                         }
                         else {
                           $('#addressForm').append('<div class="col-sm-8 col-sm-offset-1 errorMessage">No matches found</div>');
