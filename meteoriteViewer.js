@@ -8,18 +8,28 @@
 
 // Get address information from User
       $("#formSubmit").click(function(){
+        $('.errorMessage').remove();  //remove error messages from previous queries, if any
 //Create and format variables using inputted address data
         var street = encodeURIComponent($("#inputStreetAdd").val().trim());
         var state = encodeURIComponent($("#inputState").val().trim());
         var city = encodeURIComponent($("#inputCity").val().trim());
         var zipCode = encodeURIComponent($("#inputZipCode").val().trim());
-        var radiusOfInterest = $("#radius").val();
-        if (!radiusOfInterest){
+        var country = encodeURIComponent($("#inputCountry").val().trim());
+        if (!$("#radius").val()){
           $('#addressForm').append('<div class="col-sm-8 col-sm-offset-1 errorMessage">You must enter a radius.</div>');
           return;
         }
+//convert miles to meters
+        if ($('#milesRadio').is(':checked')){
+          var radiusOfInterest = (1609.34*parseFloat($("#radius").val())).toString();
+        }
+//convert kilometers to meters
+        else if ($('#kilometersRadio').is(':checked')) {
+          var radiusOfInterest = (1000*parseFloat($("#radius").val())).toString();
+        }
+        console.log(radiusOfInterest);
 //Create address variable to use in url for Google Geocode API
-        var address = street+city+state+zipCode;
+        var address = street+city+state+zipCode+country;
         console.log(address);
 //Send user address to Google Geocode API
         $.ajax({
@@ -49,7 +59,7 @@
                           setMeteoriteMapMarkers(NASAdata);
                         }
                         else {
-                          $('#jQuery').before('<div class="col-sm-8 col-sm-offset-2" id="meteoriteMap">No Matches Found</div>');
+                          $('#addressForm').append('<div class="col-sm-8 col-sm-offset-1 errorMessage">No matches found</div>');
                         }
 
                       }
@@ -107,7 +117,10 @@
         position:{lat: parseFloat(meteorite.reclat), lng: parseFloat(meteorite.reclong)},
         });
         var infowindow = new google.maps.InfoWindow({
-        content: `Name: ${meteorite.name} <br> Date: ${meteorite.year}`
+        content: `Name: ${meteorite.name} <br>
+                  Date: ${meteorite.year.slice(5,7)}/${meteorite.year.slice(8,10)}/${meteorite.year.slice(0,4)} <br>
+                  Mass (grams): ${meteorite.mass || "unavailable"} <br>
+                  Location: ${meteorite.reclat}, ${meteorite.reclong}`
         });
 
         marker.setMap(meteoriteMap);

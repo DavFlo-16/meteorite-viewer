@@ -6,7 +6,7 @@ body, html{
 }
 
 body {
-  background-image: url(large_crater.jpg);
+  background-image: url(large_crater_03.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,9 +28,15 @@ body {
   font-size: 1.5em;
 }
 
-#addressForm {
+#addressForm, label {
+  font-family: 'Share Tech', sans-serif;
   opacity: 1.0;
-  margin-top: 3%
+  margin-top: 3%;
+}
+
+label {
+  color: rgb(206, 209, 212);
+  font-size: 1.1em;
 }
 
 #formSubmit {
