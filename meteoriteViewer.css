@@ -44,9 +44,9 @@ label {
 }
 
 .errorMessage {
-  color: rgb(246, 23, 9);
+  color: rgb(251, 80, 6);
   font-family: 'Share Tech', sans-serif;
-  font-size: 1.3em;
+  font-size: 1.6em;
 }
 
 #meteoriteMap {

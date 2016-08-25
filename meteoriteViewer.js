@@ -27,6 +27,10 @@
         else if ($('#kilometersRadio').is(':checked')) {
           var radiusOfInterest = (1000*parseFloat($("#radius").val())).toString();
         }
+        else {
+          $('#addressForm').append('<div class="col-sm-10 col-sm-offset-1 errorMessage">You must select a unit for your radius (miles or kilometers).</div>');
+          return;
+        }
         console.log(radiusOfInterest);
 //Create address variable to use in url for Google Geocode API
         var address = street+city+state+zipCode+country;
